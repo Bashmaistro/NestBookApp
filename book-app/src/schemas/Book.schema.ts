@@ -7,7 +7,7 @@ export class Book {
     @Prop({ unique: true, required:true })
     bookName: string;
     
-    @Prop({ unique: true, required:true })
+    @Prop({ unique: false, required:true })
     author: string;
 
     @Prop({ unique: false, required:false })

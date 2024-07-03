@@ -16,7 +16,7 @@ export class User {
     @Prop({ unique: true, required:true })
     password: string;
 
-    @Prop({ type: [{ type: Types.ObjectId, ref: 'Book' }] })
+    @Prop({ type: [{ type: Types.ObjectId, ref: 'Book' }]  })
   favoriteBooks: Book[];
 
 

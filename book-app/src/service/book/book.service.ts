@@ -20,6 +20,11 @@ export class BookService {
         return await this.bookModel.find()
     }
 
+    async findByName(bookname: string){
+        return await this.bookModel.findOne({bookName: bookname})
+    }
+    
+
    
 
 

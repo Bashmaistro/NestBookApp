@@ -1,5 +1,6 @@
 import {Book} from '../schemas/Book.schema'
 import { IsArray, IsEmail, IsNotEmpty, IsOptional, IsString} from 'class-validator'
+import { MaxArraySize } from "../Dtos/customValidator/MaxSizeValidator.decarator"
 
   export class CreateUserDto{
 
@@ -18,5 +19,6 @@ import { IsArray, IsEmail, IsNotEmpty, IsOptional, IsString} from 'class-validat
 
     @IsArray()
     @IsOptional()
+    @MaxArraySize(10 , { message: "You can add maximum 10 book to your favorites"})
     favoriteBooks: Book[];
     }

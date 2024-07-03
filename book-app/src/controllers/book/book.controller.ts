@@ -1,5 +1,6 @@
-import { Controller, Post , Body, UsePipes, ValidationPipe,Get} from '@nestjs/common';
+import { Controller, Post , Body, UsePipes, ValidationPipe,Get, UseGuards, Req} from '@nestjs/common';
 import { CreateBookDto } from 'src/Dtos/CreateBookDto';
+import { JwtAuthGuard } from 'src/auth/Guard/jwt.guard';
 
 import { BookService } from 'src/service/book/book.service';
 
@@ -13,8 +14,11 @@ export class BookController {
 
     @Post()
     @UsePipes(new ValidationPipe())
-    createUser( @Body() createBookDto: CreateBookDto){
+    @UseGuards(JwtAuthGuard)
+    createUser( @Body() createBookDto: CreateBookDto, @Req() req : any){
 
+
+        createBookDto.author = req.user.username;
         console.log(createBookDto);
         
         return this.booksService.createBook(createBookDto);

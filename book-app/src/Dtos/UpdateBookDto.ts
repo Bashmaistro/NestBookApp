@@ -1,18 +1,16 @@
-
 import { IsArray, IsEmail, IsNotEmpty, IsOptional, IsString} from 'class-validator'
 
-  export class CreateBookDto{
+  export class UpdateBookDto{
 
-    @IsNotEmpty()
-    @IsString()
-    bookName: string;
+    @IsOptional()
+    bookName?: string;
+
+    
+    @IsOptional()
+    author?: string;
 
     
     
-    author: string;
-
-    
-    @IsString()
     @IsOptional()
     summary?: string;
 
